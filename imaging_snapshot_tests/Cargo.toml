@@ -14,6 +14,7 @@ imaging = { path = "../imaging", features = ["std"] }
 kurbo = { workspace = true, default-features = true }
 peniko = { workspace = true, default-features = true }
 imaging_skia = { path = "../imaging_skia", optional = true }
+imaging_svg = { path = "../imaging_svg", optional = true }
 imaging_vello = { path = "../imaging_vello", optional = true }
 imaging_vello_cpu = { path = "../imaging_vello_cpu", optional = true }
 imaging_vello_hybrid = { path = "../imaging_vello_hybrid", optional = true }
@@ -31,3 +32,4 @@ vello_cpu = ["dep:imaging_vello_cpu", "dep:vello_cpu"]
 skia = ["dep:imaging_skia"]
 vello_hybrid = ["dep:imaging_vello_hybrid"]
 vello = ["dep:imaging_vello"]
+svg = ["dep:imaging_svg"]

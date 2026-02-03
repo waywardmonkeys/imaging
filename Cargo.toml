@@ -4,6 +4,7 @@ members = [
   "imaging",
   "imaging_conformance",
   "imaging_skia",
+  "imaging_svg",
   "imaging_snapshot_tests",
   "imaging_vello",
   "imaging_vello_cpu",

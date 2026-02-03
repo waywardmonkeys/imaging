@@ -48,6 +48,8 @@ static CASES_VELLO_HYBRID: &[&dyn SnapshotCase] = &[
 
 static CASES_VELLO: &[&dyn SnapshotCase] = CASES_VELLO_HYBRID;
 
+static CASES_SVG: &[&dyn SnapshotCase] = CASES_VELLO_CPU;
+
 /// List of cases to run for a given backend.
 pub fn selected_cases_for_backend(backend: &str) -> &'static [&'static dyn SnapshotCase] {
     match backend {
@@ -55,6 +57,7 @@ pub fn selected_cases_for_backend(backend: &str) -> &'static [&'static dyn Snaps
         "skia" => CASES_SKIA,
         "vello_hybrid" => CASES_VELLO_HYBRID,
         "vello" => CASES_VELLO,
+        "svg" => CASES_SVG,
         _ => &[],
     }
 }

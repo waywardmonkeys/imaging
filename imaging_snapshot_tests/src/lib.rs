@@ -12,9 +12,14 @@ use imaging as _;
 
 #[cfg(feature = "vello_cpu")]
 use imaging_vello_cpu as _;
+#[cfg(feature = "vello_cpu")]
+use vello_cpu as _;
 
 #[cfg(feature = "skia")]
 use imaging_skia as _;
+
+#[cfg(feature = "svg")]
+use imaging_svg as _;
 
 #[cfg(feature = "vello_hybrid")]
 use imaging_vello_hybrid as _;

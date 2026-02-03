@@ -7,6 +7,10 @@
     missing_docs,
     reason = "Integration-test helper module; not part of the public API."
 )]
+#![allow(
+    dead_code,
+    reason = "This module is shared across multiple feature-gated integration tests."
+)]
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -117,4 +121,51 @@ pub(crate) fn check_snapshot(backend: &str, name: &str, image: &Image, errors: &
             }
         }
     };
+}
+
+pub(crate) fn check_text_snapshot(
+    backend: &str,
+    name: &str,
+    ext: &str,
+    contents: &str,
+    errors: &mut Vec<String>,
+) {
+    let expected_dir = snapshots_dir(backend);
+    let expected_path = expected_dir.join(format!("{name}.{ext}"));
+    let current_dir = current_dir(backend);
+    let current_path = current_dir.join(format!("{name}.{ext}"));
+
+    fs::create_dir_all(&expected_dir).expect("create snapshots dir");
+    fs::create_dir_all(&current_dir).expect("create current dir");
+
+    let accept = accept_enabled();
+
+    if !expected_path.exists() {
+        if accept {
+            fs::write(&expected_path, contents).expect("write new snapshot");
+            return;
+        }
+        fs::write(&current_path, contents).expect("write current snapshot");
+        errors.push(format!(
+            "missing snapshot `{}` (generated current `{}`); run with `IMAGING_TEST=accept` to bless",
+            expected_path.display(),
+            current_path.display()
+        ));
+        return;
+    }
+
+    let expected = fs::read_to_string(&expected_path).expect("read expected snapshot");
+    if expected == contents {
+        return;
+    }
+
+    if accept {
+        fs::write(&expected_path, contents).expect("update snapshot");
+    } else {
+        fs::write(&current_path, contents).expect("write current snapshot");
+        errors.push(format!(
+            "snapshot mismatch for `{name}` (wrote `{}`)",
+            current_path.display()
+        ));
+    }
 }

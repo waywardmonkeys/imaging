@@ -654,6 +654,7 @@ version = "0.1.0"
 dependencies = [
  "imaging",
  "imaging_skia",
+ "imaging_svg",
  "imaging_vello",
  "imaging_vello_cpu",
  "imaging_vello_hybrid",
@@ -661,6 +662,15 @@ dependencies = [
  "kurbo",
  "peniko",
  "vello_cpu",
+]
+
+[[package]]
+name = "imaging_svg"
+version = "0.1.0"
+dependencies = [
+ "imaging",
+ "kurbo",
+ "peniko",
 ]
 
 [[package]]
