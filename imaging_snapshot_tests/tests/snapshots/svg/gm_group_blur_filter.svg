@@ -1,0 +1,2 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<defs><filter id="filter1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="6 6" result="r0"/></filter></defs><path d="M0 0L256 0L256 256L0 256Z" fill-rule="nonzero" fill="#ffffff"/><g filter="url(#filter1)" style="isolation:isolate"><path d="M89.6 89.6L166.4 89.6L166.4 166.4L89.6 166.4Z" fill-rule="nonzero" fill="#000000"/></g></svg>

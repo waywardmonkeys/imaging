@@ -1,0 +1,24 @@
+[package]
+name = "imaging_svg"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "SVG export backend for the imaging command stream."
+readme = "README.md"
+publish = false
+
+[dependencies]
+imaging = { path = "../imaging" }
+kurbo = { workspace = true }
+peniko = { workspace = true }
+
+[lints]
+workspace = true
+
+[features]
+default = []
+std = ["imaging/std", "kurbo/std", "peniko/std"]
+libm = ["imaging/libm", "kurbo/libm", "peniko/libm"]
+
